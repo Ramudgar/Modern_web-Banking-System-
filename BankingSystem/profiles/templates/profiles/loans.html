@@ -68,21 +68,18 @@
         <h4 style="font-weight: 300;">It's good to have you here.</h4>   
         <br>   
         
-
-        <form action="{ url 'profile:loan_app' }" method="post">
-            {% csrf_token %}
-
+        <form>
             <h3 style="font-weight: 300;">
-
-
-                {{loan}}
-
-
-
+                What do you need the loan for?
+                <input type="text" class="form-control" id="loan_type" required>
             </h3>
-
+            <br>
+            <h3 style="font-weight: 300;">
+                Enter the amount of loan needed (₱)
+                <input type="number" class="form-control" id="loan_amt" required>
+            </h3>
             <small>Please read the <a href="#">Terms and Conditions</a> before requesting for loan</small>. <br>
-            <button class="btn btn-primary"  id="loan_submit">Request loan</button>
+            <button class="btn btn-primary" type="button" id="loan_submit">Request loan</button>
         </form>
         
     </section>
@@ -95,14 +92,14 @@
 
         $("#loan_submit").click(function() {
             var msg = "Your loan has been requested. You'll be notified if it gets approved in 24 hours. Press OK."
-
+            
             if(
-                $("#loan_type").val() =="" ||
+                $("#loan_type").val() =="" || 
                 $("#loan_amt").val() == ""
             )
                     msg = "Error: One or more of the required fields is missing";
-
-
+                
+            
             alert(msg);
         });
     </script>

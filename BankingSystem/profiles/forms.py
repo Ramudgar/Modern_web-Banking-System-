@@ -21,14 +21,3 @@ class MoneyTransferForm (forms.ModelForm):
             "enter_the_destination_account_number", 
             "enter_the_amount_to_be_transferred_in_INR"
         ]
-
-
-class Loan (forms.ModelForm):
-    class Meta:
-        model = models.Loan
-        fields = [
-            "enter_your_user_name",
-            "purpose",
-            "amount",
-
-        ]

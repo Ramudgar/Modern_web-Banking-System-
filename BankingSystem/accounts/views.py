@@ -1,68 +1,39 @@
-
 from django.shortcuts import render,redirect
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import LoginForm
+from .forms import RegistrationForm
+
 
 def sign_in(request):
-    if request.method=="POST":
-        form=LoginForm(request.POST)
-        if form.is_valid():
-            data=form.cleaned_data
-            user=authenticate(request,username=data['username'],password=data['password'])
-
-            if user is not None:
-                login(request,user)
-                return redirect("profiles:account_status")
+    if request.user.is_authenticated:
+        return redirect('profiles:account_status')
+    else:
+        if request.method == "POST":
+            user = request.POST.get('user')
+            password = request.POST.get('pass')
+            auth = authenticate(request, username=user, password=password)
+            if auth is not None:
+                if auth.is_staff:
+                    login(request, auth)
+                    return redirect('admins:admin_index')
+                elif not auth.is_staff:
+                    login(request, auth)
+                    return redirect('profiles:account_status')
             else:
-                messages.add_message(request, messages.ERROR, 'Invalid user credentials')
-                return render(request,"accounts/sign_in.html",{"form_login":form})
+                messages.error(request, 'username and password doesn\'t match')
+    return render(request, "accounts/sign_in.html")
 
 
-    context={
-        "form_login":LoginForm,
-        "activate_login":"active"
-    }
-    return render(request,"accounts/sign_in.html",context)
-# def sign_in(request):
-#     if request.method == "POST":
-#         form = AuthenticationForm(data=request.POST)
-#         if form.is_valid():
-#             user = form.get_user()
-#             login(request, user)
-#             return redirect("profiles:account_status")
-#     else:
-#         form = AuthenticationForm()
-#         return render(request, "accounts/sign_in.html", {"form": form})
+
+
+
 def register(request):
-    if request.method=="POST":
-        form=UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.add_message(request,messages.SUCCESS,'User registered Successfully')
-            return redirect("accounts:signin")
-        else:
-            messages.add_message(request,messages.ERROR,'Unable to register user')
-            return render(request,"accounts/register.html",{"form_register":form})
-
-    context={
-        "form_register":UserCreationForm,
-        'activate_register':'active'
-    }
-    return render(request,"accounts/register.html",context)
-# def register(request):
-#     if request.method == "POST":
-#         form = UserCreationForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect("accounts:signin")
-#     else:
-#         form = UserCreationForm()
-#     return render(request, "accounts/register.html", {"form": form})
-
-
+    form = RegistrationForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('accounts:signin')
+    return render(request, 'accounts/register.html', {"form": form})
 
 def logout_view(request):
     # Logout the user if he hits the logout submit button

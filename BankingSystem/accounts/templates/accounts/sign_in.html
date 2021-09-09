@@ -1,43 +1,53 @@
-{% extends 'layout.html' %}
-{% load bootstrap %}
-{% block stylecontent %}
+{% extends 'layout.html' %} {% load static %} {% block title %}
+<title>login</title>
+{% endblock %} {% block stylecontent %}
+<style>
+h1{
+margin-top: 20px;
+text-align: center;
+color:deepskyblue;
+} 
+</style>
 
-{% endblock %}
+{% endblock %} {% block bodycontent %}
 
-
-{% block bodycontent%}
-<div class="container mt-5"><div class="row">
-
-    <div class="col-md-6 offset-md-3">
-        <h1 class="text-center">Enter Login credentials </h1>
-         {% include 'messages.html' %}
-        <div class="card py-2 px-2">
-            <form class="myForm" action='/accounts/login/' method="POST">
-                {% csrf_token %}
-                 {{form_login | bootstrap_horizontal}}
-
-                <button type="submit"  class="btn btn-primary mt-3">Submit</button>
-            </form>
+<div class="container-fluid mt-5">
+	<h1 >Welcome To Ram Bank</h1>
+  <div class="row justify-content-md-center">
+    <div class="col-md-4 col-sm-3">
+      <div class="signin-form">
+        {% if messages %}
+        <div class="messages">
+          {% for message in messages %}
+          <p {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+            {{ message }}
+          </p>
+          {% endfor %}
         </div>
+        {% endif %}
+        <h3>Sign In</h3>
+        <form action="" method="POST" class="auth-validate-form">
+          {% csrf_token %}
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" name="user" placeholder="Enter your username" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" placeholder="Enter your password" name="pass" class="form-control" />
+          </div>
+          <button type="submit" class="btn btn-danger">Login</button>
+        </form>
+        <a href="#">Forgot your password?</a>
+        <div class="a-divider-break"><h5>New to Ram's Bank?</h5></div>
+        <a class="btn btn-default" href="{% url 'accounts:signup' %}"
+          >Create your Bank account</a
+        >
+      </div>
     </div>
-       </div>
-    </div>
+  </div>
+</div>
 
-
-
-
-{% endblock %}
-
-{% block scriptcontent %}
-<script>
-    var form_fields=document.getElementsByTagName('input')
-    form_fields[1].placeholder="Enter user name"
-    form_fields[2].placeholder="Enter password"
-
-
-for(field in form_fields){
-form_fields[field].className += ' my-3'
-}
-</script>
-
-{% endblock %}
+<!-- </body>
+</html> -->
+{% endblock %} {% block scriptcontent %} {% endblock %}

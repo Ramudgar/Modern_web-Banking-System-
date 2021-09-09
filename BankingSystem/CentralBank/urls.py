@@ -10,7 +10,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$', views.index, name = "home"),
     url(r'^accounts/', include("accounts.urls")),
-    url(r'^profiles/', include("profiles.urls")),
+    url(r'^profile/', include("profiles.urls")),
     url(r'^admins/', include("admins.urls"))
 ]
 

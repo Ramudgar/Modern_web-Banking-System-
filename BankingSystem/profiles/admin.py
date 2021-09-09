@@ -5,7 +5,6 @@ admin.site.register(BasicDetails)
 admin.site.register(PresentLocation)
 admin.site.register(Status)
 admin.site.register(MoneyTransfer)
-admin.site.register(Loan)
 
 
 

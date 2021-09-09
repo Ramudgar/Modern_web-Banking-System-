@@ -6,14 +6,15 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        <title>Myrel Bank | Profile</title>
+        {% block title%}
+        {{section.title}}
+        {% endblock%}
         
         <!-- CSS FRAMEWORKS REQUIRED -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         
-        <!-- STYLINGS -->
-        <link rel="stylesheet" href="/static/common-styles.css">
+        
         
         {% block headcontent %}
         {% endblock %}
@@ -22,8 +23,8 @@
     
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-success">
-            <img src="/static/images/homepage.png" width="50px">
-            <a class="navbar-brand" href="index.html">&nbsp;Myrel Bank</a>
+            
+            <a class="navbar-brand" href="#">Ram Bank</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -41,7 +42,7 @@
         
                 <!--SIDE PANEL BEGINS -->
                 <section id="side_panel" class="col-3 bg-dark">
-                    <img src="/static/images/adminlogo.png" class="container btn">
+                    <!-- <img src="/static/images/adminlogo.png" class="container btn"> -->
                     <!-- OPERATIONS -->
                     <a href="{% url 'profiles:account_status' %}" class="current side" id="status">Account status</a> <br> <br>
                     
@@ -49,7 +50,7 @@
                     
                     <a href="{% url 'profiles:loan_app' %}" class="side" id="loan">Loan application</a> <br> <br>
                     
-                    <a href="{% url 'profiles:ewallet' %}" class="side" id="ewallet">eWallet&trade;</a> <br> <br>
+                    <a href="{% url 'profiles:ewallet' %}" class="side" id="ewallet">eWallet</a> <br> <br>
                     
                     <a href="{% url 'profiles:online_pay' %}" class="side" id="online">Online Payment</a> <br> <br>
                     
@@ -69,9 +70,9 @@
         <!-- FOOTER -->
         <section class="foot bg-success text-white">
             <div class="text-center">
-                &copy; Website created with <i class="fa fa-heart" style="color: red;"></i> by <a href="https://itsourcecode.com/rafi007akhtar" target="_blank">Itsourcecode</a>    
+                &copy; Website created with <i class="fa fa-heart" style="color: hsl(0, 36%, 96%);"></i> by <a href="https://github.com/Ramudgar/Modern_web-Banking-System-" target="_blank">Ram Udgar Yadav</a>    
                 <br>
-                <i></i><a>&copy; Bank Management System 2021</a>
+                <i></i><a> Bank Management System 2021</a>
             </div>
         </section>   
         

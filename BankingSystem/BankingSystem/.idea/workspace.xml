@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a44e20a7-8629-4535-afd2-50fa05e7e936" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/BankingSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/BankingSystem.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CentralBank/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CentralBank/settings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CentralBank/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CentralBank/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CentralBank/wsgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../accounts/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../accounts/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../accounts/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../accounts/forms.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../accounts/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../accounts/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../accounts/templates/accounts/register.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../accounts/templates/accounts/sign_in.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../accounts/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../accounts/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../accounts/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../admins/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../admins/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../admins/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../admins/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../admins/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../admins/templates/admins/admin.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../admins/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../admins/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../admins/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/../manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../profiles/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../profiles/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../profiles/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../profiles/forms.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../profiles/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../profiles/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../profiles/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../profiles/templates/profiles/delete_account.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../profiles/templates/profiles/eWallet.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../profiles/templates/profiles/edit_details.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../profiles/templates/profiles/loans.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../profiles/templates/profiles/money_transfer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../profiles/templates/profiles/online_payment.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../profiles/templates/profiles/profile.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../profiles/templates/profiles/profile_base_layout.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../profiles/templates/profiles/settings.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../profiles/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../profiles/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../profiles/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/css/admins.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/css/setting.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/css/transaction.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/images/adminlogo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/images/bank1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/images/bank2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/images/bank3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/images/bank4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/images/homepage.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/images/image1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/images/image2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/images/image3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/images/image4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/images/image5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/images/image6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/images/images (1).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/images/images.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/images/logo copy.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/images/logo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/js/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/js/skdslider.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/footer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/layout.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/messages.html" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1xyzgbzBtUpoagrN22LP4xVhuUn" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a44e20a7-8629-4535-afd2-50fa05e7e936" name="Changes" comment="" />
+      <created>1631342229882</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1631342229882</updated>
+    </task>
+    <servers />
+  </component>
+</project>

@@ -22,17 +22,18 @@ href="{% static 'css/setting.css' %}"
         <br>
         
         <!-- EDIT BASIC DETAILS -->
-        <a href="#basic" class="btn btn-primary btn-block" data-toggle="modal" data-target="#basic">Edit basic</a>
+        <!-- <a href="#basic" class="btn btn-primary btn-block" data-toggle="modal" data-target="#basic">Edit basic</a> -->
+        <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#basic">Edit Basic details</button>
         <div class="modal fade" id="basic" tabindex="-1" role="dialog" aria-labelledby="basic" aria-hidden="true">
             <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Edit basic details</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true"></span>
                 </button>
                 </div>
-                <form action="{ url 'profiles:edit_details' }" method="post" enctype="multipart/form-data" id="basic-form">
+                <form action="{ url 'profiles:edit_details' }" method="post" enctype="multipart/form-data" id="basic">
                     <div class="modal-body">
                        
 
@@ -105,40 +106,42 @@ href="{% static 'css/setting.css' %}"
                 
             </div>
             </div>
-        </div>
-        (Account type)
-        <br> <br>
         
-        <!-- EDIT PASSWORD -->
-        <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#password">Edit password</button>
-        <div class="modal fade" id="password" tabindex="-1" role="dialog" aria-labelledby="password" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit password</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+    </div>
+    (Account type)
+    <br><br>
+    <!-- EDIT PASSWORD -->
+    <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#password">Edit password</button>
+    <div class="modal fade" id="password" tabindex="-1" role="dialog" aria-labelledby="password" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit password</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <form>
+                <div class="modal-body">
+                    
+                    {% csrf_token %}
+                    {{ form3 }}
+                    Prove you are human
+                    <div class="g-recaptcha" data-sitekey="6Ld_qjQUAAAAADjv2scrqpvXK4OrBZALRJFMANpP"></div>
                 </div>
-                <form>
-                    <div class="modal-body">
-                        
-                        {% csrf_token %}
-                        {{ form3 }}
-                        Prove you are human
-                        <div class="g-recaptcha" data-sitekey="6Ld_qjQUAAAAADjv2scrqpvXK4OrBZALRJFMANpP"></div>
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Update password</button>
-                    </div>
-                </form>
-                
-            </div>
-            </div>
-        </div>    
+                <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Update password</button>
+                </div>
+            </form>
+            
+        </div>
+        </div>
+    </div>    
+   
+</section>
         
-    </section>
+        
 {% endblock %}
 
 {% block scriptcontent %}

@@ -1,3 +1,5 @@
+from django.shortcuts import render
+
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -30,12 +32,17 @@ def sign_in(request):
 
 def register(request):
     form = RegistrationForm(request.POST or None)
+    context={
+        'form':RegistrationForm,
+        'activate_signup':'active'
+    }
     if form.is_valid():
         form.save()
         return redirect('accounts:signin')
-    return render(request, 'accounts/register.html', {"form": form})
+    return render(request, 'accounts/register.html', context)
 
 def logout_view(request):
     # Logout the user if he hits the logout submit button
     logout(request)
     return redirect("accounts:signin")
+

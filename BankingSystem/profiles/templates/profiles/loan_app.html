@@ -1,5 +1,7 @@
 {% extends 'profiles/profile_base_layout.html' %}
 {% load static %}
+{% load crispy_forms_filters %}
+
 {% block title%}
 <title>loan</title>
 {% endblock%}
@@ -25,13 +27,16 @@ href="{% static 'css/transaction.css' %}"
         
         <form action="{ url 'profiles:loan_app' }" method="post">
             {% csrf_token %}
+             
 
             <h3 style="font-weight: 300;">
-                {{ form1 }}
+                
+                {{ form1|crispy }}
             </h3>
             
             <small>By transferring money from your account, you agree to the <a href="#">Terms and Conditions</a> of amount transfer</small>. <br>
             <button type="submit" class="btn btn-danger">Ask for Loan</button>
+        
         </form>
         
     </section>

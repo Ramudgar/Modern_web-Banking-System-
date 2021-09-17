@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from . import forms
 from . import models
+from . forms import DepositForm, Loan, WithdrawForm
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
-from profiles.models import Status
+from profiles.models import Status,Deposit,Loan,Withdraw
+
 import random
 
 
@@ -38,7 +40,7 @@ def money_transfer(request):
             temp = curr_user  # NOTE: Delete this instance once money transfer is done
 
             dest_user = models.Status.objects.get(account_number=dest_user_acc_num)  # FIELD 1
-            transfer_amount = curr_user.enter_the_amount_to_be_transferred_in_INR  # FIELD 2
+            transfer_amount = curr_user.enter_the_amount_to_be_transferred_in_Npr  # FIELD 2
             curr_user = models.Status.objects.get(user_name=request.user)  # FIELD 3
 
             # Now transfer the money!
@@ -58,12 +60,12 @@ def money_transfer(request):
 
 
 def loan(request):
-    # return render(request, "profiles/loans.html")
+    form=Loan()
     if request.method == "POST":
         form = forms.Loan(request.POST)
         if form.is_valid():
             form.save()
-            print("Post request sent")
+            
 
             curr_user = models.Loan.objects.get(enter_your_user_name=request.user)
             dest_user_acc_num = curr_user.enter_the_your_account_number
@@ -71,13 +73,14 @@ def loan(request):
             temp = curr_user  # NOTE: Delete this instance once money transfer is done
 
             dest_user = models.Status.objects.get(account_number=dest_user_acc_num)  # FIELD 1
-            transfer_amount = curr_user.enter_the_amount_to_be_transferred_in_INR  # FIELD 2
+            transfer_amount = curr_user.enter_the_amount_to_be_transferred_in_Npr  # FIELD 2
             curr_user = models.Status.objects.get(user_name=request.user)  # FIELD 3
-            # amount=models.Loan.objects.get(amount=user.amount)
+            
 
             # Now transfer the money!
             curr_user.balance = curr_user.balance + transfer_amount
             dest_user.balance = dest_user.balance + transfer_amount
+            
 
             # Save the changes before redirecting
             curr_user.save()
@@ -92,12 +95,94 @@ def loan(request):
 
 
 
-def ewallet(request):
-    return render(request, "profiles/eWallet.html")
+def withdraw_money(request):
+    form=WithdrawForm()
+    if request.method=="POST":
+        form=forms.WithdrawForm(request.POST)
+        if form.is_valid():
+            form.save()
+            curr_user1 = request.user
+            
+
+            # temp = curr_user1  # NOTE: Delete this instance once money transfer is done
+            acc=models.Status.objects.get(user_name=curr_user1.username)
+            acc_num=models.Status.objects.get(id=acc.id)
+            
+            # curr_user = models.Status.objects.get(user_name=request.username) 
+            
+
+        
+            withdraw_amount = request.POST['amount']
+
+        
+            acc_num.balance = acc_num.balance - int(withdraw_amount)
+        
+        
+            
+
+            withdraw= models.Deposit.objects.create(username=curr_user1.username,
+            account_number=acc_num.account_number,amount=withdraw_amount)
+            if withdraw:
+                acc_num.save()
+
+            # temp.delete()  # NOTE: N
+            messages.success(request,'Money withdrawn sucessfully')
+            return redirect('profiles/profile.html')
+        else:
+            messages.error(request,'Unable to withdraw amount')
+            return render(request, "profiles/withdraw_money.html",{'form':form})
+    context={
+        'form': form,
+        
+    }
+   
+    return render(request, "profiles/withdraw_money.html",context)
+    
 
 
-def online_pay(request):
-    return render(request, "profiles/online_payment.html")
+
+def deposit(request):
+    form=DepositForm()
+    if request.method=="POST":
+        form=forms.DepositForm(request.POST)
+        if form.is_valid():
+            form.save()
+            curr_user1 = request.user
+            
+
+            # temp = curr_user1  # NOTE: Delete this instance once money transfer is done
+            acc=models.Status.objects.get(user_name=curr_user1.username)
+            acc_num=models.Status.objects.get(id=acc.id)
+            
+            # curr_user = models.Status.objects.get(user_name=request.username) 
+            
+
+        
+            deposit_amount = request.POST['amount']
+
+        
+            acc_num.balance = acc_num.balance + int(deposit_amount)
+        
+        
+            
+
+            deposit= models.Deposit.objects.create(username=curr_user1.username,
+            account_number=acc_num.account_number,amount=deposit_amount)
+            if deposit:
+                acc_num.save()
+
+            # temp.delete()  # NOTE: N
+            messages.success(request,'Money deposited sucessfully')
+            return redirect('profiles/profile.html')
+        else:
+            messages.error(request,'Unable to add deposit')
+            return render(request, "profiles/deposit_money.html",{'form':form})
+    context={
+        'form': form,
+        
+    }
+    return render(request, "profiles/deposit_money.html",context)
+    
 
 
 def settings(request):

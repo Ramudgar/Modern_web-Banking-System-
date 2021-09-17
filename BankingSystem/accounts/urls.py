@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import include, url
 from django.urls import path
 from django.contrib.auth import update_session_auth_hash
 
@@ -13,10 +13,10 @@ urlpatterns = [
     url(r"^login/$", views.sign_in, name="signin"),
     url(r"^logout/$", views.logout_view, name="logout"),
 # Forget password
-
+    url('^', include('django.contrib.auth.urls')),
     url(r'^reset_password/$', auth_views.PasswordResetView.as_view(
         template_name='accounts/password_reset.html'), name='reset_password'),
-    url(r'^reset_password_sent/$', auth_views.PasswordResetDoneView.as_view(
+    url(r'^reset_password_done/$', auth_views.PasswordResetDoneView.as_view(
         template_name='accounts/password_reset_done.html'), name='password_reset_done'),
     url(r'^reset/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$', auth_views.PasswordResetConfirmView.as_view(
         template_name='accounts/password_reset_confirm.html'), name='password_reset_confirm'),

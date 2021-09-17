@@ -32,14 +32,11 @@ def sign_in(request):
 
 def register(request):
     form = RegistrationForm(request.POST or None)
-    context={
-        'form':RegistrationForm,
-        'activate_signup':'active'
-    }
+
     if form.is_valid():
         form.save()
         return redirect('accounts:signin')
-    return render(request, 'accounts/register.html', context)
+    return render(request, 'accounts/register.html', {'form':form})
 
 def logout_view(request):
     # Logout the user if he hits the logout submit button

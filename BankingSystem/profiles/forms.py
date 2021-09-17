@@ -1,5 +1,6 @@
 from django import forms
 from . import models
+from django.forms import ModelForm
 
 
 class BasicDetailsForm(forms.ModelForm):
@@ -21,7 +22,7 @@ class MoneyTransferForm(forms.ModelForm):
         fields = [
             "enter_your_user_name",
             "enter_the_destination_account_number",
-            "enter_the_amount_to_be_transferred_in_INR"
+            "enter_the_amount_to_be_transferred_in_Npr"
         ]
 
 class Loan(forms.ModelForm):
@@ -30,5 +31,16 @@ class Loan(forms.ModelForm):
         fields = [
             "enter_your_user_name",
             "enter_the_your_account_number",
-            "enter_the_amount_to_be_transferred_in_INR"
+            "enter_the_amount_to_be_transferred_in_Npr"
         ]
+
+
+class DepositForm(forms.ModelForm):
+    class Meta:
+        model=models.Deposit
+        fields= '__all__'
+
+class WithdrawForm(forms.ModelForm):
+    class Meta:
+        model=models.Withdraw
+        fields= '__all__'

@@ -1,6 +1,7 @@
 from django.db import models
 import datetime
-
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 
 class BasicDetails(models.Model):
     # (Name, Sex, DOB, Annual income, Email, Mobile number, Occupation)
@@ -16,7 +17,7 @@ class BasicDetails(models.Model):
 
 class PresentLocation(models.Model):
     # (Country, State, City, Street, Pincode)
-    country = models.CharField(max_length=50, default="India")
+    country = models.CharField(max_length=50, default="Nepal")
     state = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
     street = models.CharField(max_length=50)
@@ -33,10 +34,33 @@ class Status(models.Model):
 class MoneyTransfer(models.Model):
     enter_your_user_name = models.CharField(max_length=150, default=None)
     enter_the_destination_account_number = models.IntegerField()
-    enter_the_amount_to_be_transferred_in_INR = models.IntegerField()
+    enter_the_amount_to_be_transferred_in_Npr = models.IntegerField()
 
 
 class Loan(models.Model):
     enter_your_user_name = models.CharField(max_length=150, default=None)
     enter_the_your_account_number = models.IntegerField()
-    enter_the_amount_to_be_transferred_in_INR = models.IntegerField()
+    enter_the_amount_to_be_transferred_in_Npr = models.IntegerField()
+    def __str__(self):
+        return self.enter_your_user_name
+
+class Deposit(models.Model):
+     
+     username = models.CharField(max_length=150, default=None)
+     account_number = models.IntegerField()
+     amount = models.IntegerField()
+
+     
+     
+     def __str__(self):
+        return self.username
+
+
+class Withdraw(models.Model):
+     username = models.CharField(max_length=150, default=None)
+     account_number = models.IntegerField()
+     amount = models.IntegerField()
+     def __str__(self):
+            return self.username
+     
+    

@@ -1,0 +1,50 @@
+{% extends 'profiles/profile_base_layout.html' %}
+{% load static %}
+{% block title%}
+<title>ewallet</title>
+{% endblock%}
+{% block headcontent %}
+<link
+rel="stylesheet"
+type="text/css"
+href="{% static 'css/setting.css' %}"
+/>
+{% endblock %}
+
+{% block bodycontent %}
+<form action="{ url 'profiles:withdraw' }" method="POST">
+    {% csrf_token %}
+    <div class="container-fluid bg-info mt-5 ml-5 border border-info pd-3" >
+        <h3 style="text-align: center; margin-top: 20px;border-bottom:2px solid black ;">Submit Withdraw Form Here</h3>
+        <div class="container-sm ml-5 mt-3 mb-5 mr-5" >
+            <div class="form-group">
+                <label>Enter the User Name:</label>
+                <input type="text" name="username" value = "{{user}}" placeholder="Enter Username" class="form-control"></input>
+            </div>
+            
+            
+            <div class="form-group">
+                <label>Enter your Account Number:</label>
+                <input type="text" name="account_number"  placeholder="Enter account number " class="form-control"></input>
+            </div>
+        
+            <div class="form-group">
+                <label>Amount:</label>
+                <input type="text" name="amount"  placeholder="How much you deposit" class="form-control">
+            </div>
+            <div class="text-right mt-4">
+                <button type="submit" class="btn btn-primary">Withdraw</button>
+            </div>
+        </div>
+        </div>
+    
+    
+</form>
+{% endblock %}
+
+{% block scriptcontent %}
+    <!-- <script>
+        $(".current").removeClass("current");
+        $("#ewallet").addClass("current");
+    </script> -->
+{% endblock %}

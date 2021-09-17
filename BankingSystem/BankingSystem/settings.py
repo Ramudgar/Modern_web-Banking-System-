@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'profiles.apps.ProfilesConfig',
     'admins.apps.AdminsConfig',
     'crispy_forms',
-    'bootstrapform'
+    'bootstrapform',
+    
 ]
 
 MIDDLEWARE = [
@@ -88,7 +89,7 @@ WSGI_APPLICATION = 'BankingSystem.wsgi.application'
 DATABASES = {
         'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Bank system',
+        'NAME': 'Banksystem',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
@@ -139,7 +140,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=[
     os.path.join(BASE_DIR,'static')
 ]
-CRISPY_TEMPLATE_PACK = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

@@ -7,7 +7,8 @@ class BasicDetailsForm(forms.ModelForm):
     # class to store all the model form fields from models.py
     class Meta:
         model = models.BasicDetails
-        fields = ["name", "sex", "annual_income", "email", "mobile", "occupation", "DOB"]
+        fields= '__all__'
+        exclude=['user','username']
 
 
 class PresentLocationForm(forms.ModelForm):

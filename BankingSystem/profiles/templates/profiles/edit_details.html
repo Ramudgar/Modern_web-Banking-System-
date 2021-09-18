@@ -1,5 +1,6 @@
 {% extends 'profiles/profile_base_layout.html' %}
 {% load static %}
+{% load crispy_forms_filters %}
 {% block title%}
 <title>details setting</title>
 {% endblock%}
@@ -20,39 +21,35 @@ href="{% static 'css/setting.css' %}"
             Only the following details can be edited. For the rest, kindly visit the bank in person.
         </h4>
         <br>
+         <!-- EDIT PRESENT LOCATION -->
+         <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#basic">Edit present location</button>
         
-        <!-- EDIT BASIC DETAILS -->
-        <!-- <a href="#basic" class="btn btn-primary btn-block" data-toggle="modal" data-target="#basic">Edit basic</a> -->
-        <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#basic">Edit Basic details</button>
-        <div class="modal fade" id="basic" tabindex="-1" role="dialog" aria-labelledby="basic" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit basic details</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true"></span>
-                </button>
-                </div>
-                <form action="{ url 'profiles:edit_details' }" method="post" enctype="multipart/form-data" id="basic">
-                    <div class="modal-body">
-                       
-
-                        {% csrf_token %}
-                        {{ form1 }}
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Edit details</button>
-                    </div>
-                </form>
-                
-            </div>
-            </div>
-        </div>
-        
-        
-        (Email, Mobile number, Occupation)
-        <br> <br>
+         <div class="modal fade" id="basic" tabindex="-1" role="dialog" aria-labelledby="basic" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+             <div class="modal-content">
+                 <div class="modal-header">
+                 <h5 class="modal-title" id="exampleModalLabel">Edit Basic Details</h5>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                 </button>
+                 </div>
+                 <form action="{ url 'profiles:edit_details' }" method="post" enctype="multipart/form-data" id="basic">
+                     <div class="modal-body">
+                         {% csrf_token %}
+                         {{ form1 | crispy }}
+                     </div>
+                     <div class="modal-footer">
+                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                     <button type="submit" class="btn btn-primary">Edit details</button>
+                     </div>
+                 </form>
+                 
+             </div>
+             </div>
+         </div>
+         (Email, Mobile number, Occupation)
+         <br> <br>
+       
         
         <!-- EDIT PRESENT LOCATION -->
         <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#location">Edit present location</button>
@@ -69,7 +66,7 @@ href="{% static 'css/setting.css' %}"
                 <form action="{ url 'profiles:edit_details' }" method="post" enctype="multipart/form-data" id="location">
                     <div class="modal-body">
                         {% csrf_token %}
-                        {{ form2 }}
+                        {{ form2 | crispy }}
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -125,7 +122,7 @@ href="{% static 'css/setting.css' %}"
                 <div class="modal-body">
                     
                     {% csrf_token %}
-                    {{ form3 }}
+                    {{ form3 | crispy }}
                     Prove you are human
                     <div class="g-recaptcha" data-sitekey="6Ld_qjQUAAAAADjv2scrqpvXK4OrBZALRJFMANpP"></div>
                 </div>

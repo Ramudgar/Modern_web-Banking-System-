@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import RegistrationForm
+from profiles.models import BasicDetails
 
 
 def sign_in(request):
@@ -34,7 +35,9 @@ def register(request):
     form = RegistrationForm(request.POST or None)
 
     if form.is_valid():
-        form.save()
+        user=form.save()
+        BasicDetails.objects.create(user=user,username=user.username)
+        messages.success(request, 'user registered successfully')
         return redirect('accounts:signin')
     return render(request, 'accounts/register.html', {'form':form})
 

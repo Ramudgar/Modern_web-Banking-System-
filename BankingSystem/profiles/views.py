@@ -189,12 +189,13 @@ def settings(request):
     return render(request, "profiles/settings.html")
 
 
+
 def edit_details(request):
     if request.method == "POST":
         # POST actions for BasicDetailsForms
         try:
             curr_user = models.BasicDetails.objects.get(user_name=request.user)
-            form = forms.BasicDetailsForm(request.POST, instance=curr_user)
+            form = forms.BasicDetailsForm(request.POST, request.FILES,instance=curr_user)
             if form.is_valid():
                 form.save()
         except:
@@ -202,7 +203,7 @@ def edit_details(request):
             if form.is_valid():
                 form = form.save(commit=False)
                 form.user_name = request.user
-                form.save()
+                form.save()  
 
         # POST actions for PresentLocationForm
         try:
@@ -215,39 +216,28 @@ def edit_details(request):
             if form.is_valid():
                 form = form.save(commit=False)
                 form.user_name = request.user
-                form.save()
-
-                # POST actions for Password change
-        form = PasswordChangeForm(request.user, request.POST)
-        if form.is_valid():
-            user = form.save()
-            update_session_auth_hash(request, user)  # Important!
-            messages.success(request, 'Your password was successfully updated!')
-            return redirect('change_password')
-        else:
-            messages.error(request, 'Please correct the error below.')
+                form.save()     
+           
 
         return redirect("profiles/edit_details.html")
-
-    else:  # GET actions
+    
+    else: # GET actions
         try:
             curr_user = models.BasicDetails.objects.get(user_name=request.user)
-            form1 = forms.BasicDetailsForm(instance=curr_user)  # basic details
+            form1 = forms.BasicDetailsForm(instance=curr_user) # basic details
         except:
             form1 = forms.BasicDetailsForm()
-
+        
         try:
             curr_user = models.PresentLocation.objects.get(user_name=request.user)
-            form2 = forms.PresentLocationForm(instance=curr_user)  # location
+            form2 = forms.PresentLocationForm(instance=curr_user) # location
         except:
             form2 = forms.PresentLocationForm()
 
-        # change password
-        form3 = PasswordChangeForm(request.user)
+       
 
-        dici = {"form1": form1, "form2": form2, "form3": form3}
-        return render(request, "profiles/edit_details.html", dici)
-
+        context = {"form1": form1, "form2": form2}
+        return render(request, "profiles/edit_details.html", context)
 
 def delete_account(request):
-    return render(request, "profiles/delete_account.html")# Create your views here.
+    return render(request, "profiles/delete_account.html")

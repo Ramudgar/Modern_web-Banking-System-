@@ -5,11 +5,13 @@ from django.db.models.signals import post_save
 
 class BasicDetails(models.Model):
     # (Name, Sex, DOB, Annual income, Email, Mobile number, Occupation)
+    user= models.OneToOneField(User,null=True,on_delete=models.CASCADE)
     name = models.CharField(max_length=50, default=None)
+    profile_pic=models.FileField(upload_to="static/photo",default='static/images/default_user.png')
     sex = models.CharField(max_length=1, default=None)
     annual_income = models.IntegerField(default=0)
     email = models.EmailField(default=None)
-    mobile = models.IntegerField(default=0)
+    mobile = models.CharField(max_length=15,default=0)
     occupation = models.CharField(max_length=50, default=None)
     DOB = models.DateField(default=None)
     user_name = models.CharField(max_length=150, default=None)

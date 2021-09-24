@@ -41,27 +41,35 @@
         <div class="container-fluid row">
         
                 <!--SIDE PANEL BEGINS -->
+                {% if user.is_authenticated %}
                 <section id="side_panel" class="col-3 bg-dark">
-                    <!-- <img src="/static/images/adminlogo.png" class="container btn"> -->
+                    <div>
+                    <img class="rounded-circle article-img " src="/{{ request.user.basicdetails.profile_pic}}" alt="profile pic" id="img" width="80" height="90">
+                    <div style="margin-top: 5px;margin-left: 10px; color:hsl(0, 36%, 96%)">
+                    {{request.user}}</div>
+                </div>
+                <br> 
                     <!-- OPERATIONS -->
+                
                     <a href="{% url 'profiles:account_status' %}" class="current side" id="status">Account status</a> <br> <br>
                     
-                    <a href="{% url 'profiles:money_transfer' %}" class="side" id="transfer">Money Transfer</a> <br> <br>
+                    <a href="{% url 'profiles:money_transfer' %}" class="side {{activate_transfer}}" id="transfer">Money Transfer</a> <br> <br>
                     
                     <a href="{% url 'profiles:loan_app' %}" class="side" id="loan">Loan application</a> <br> <br>
                     
-                    <a href="{% url 'profiles:withdraw' %}" class="side" id="ewallet">Withdraw Money </a> <br> <br>
+                    <a href="{% url 'profiles:withdraw' %}" class="side {{activate_withdraw}}" id="withdraw">Withdraw Money </a> <br> <br>
                     
-                    <a href="{% url 'profiles:deposit' %}" class="side" id="online">Deposit Money</a> <br> <br>
+                    <a href="{% url 'profiles:deposit' %}" class="side {{activate_deposit}}" id="deposit ">Deposit Money</a> <br> <br>
                     
                     <a href="{% url 'profiles:settings' %}" class="side" id="settings">Account settings</a> <br> <br>
                     
                     <a href="{% url 'profiles:edit_details' %}" class="side warning" id="details">Edit account details</a> <br> <br>
-                    <a href="#" class="side warning" id="password">Change Password</a> <br> <br>
                     
-                    <a href="{% url 'profiles:delete_account' %}" class="side danger" id="delete">Delete account</a> <br> <br> 
+                    
+                    <a href="{% url 'profiles:delete_account' %}" class="side danger {{activate_deposit}}" id="delete">Delete account</a> <br> <br> 
                                   
                 </section>
+                {% endif %}
                 <!-- SIDE PANEL ENDS -->
         
                 {% block bodycontent %}

@@ -12,6 +12,9 @@ h3{
 		color:violet;
 		text-decoration: underline;
 	}
+  .auth-validate-form button{
+    background-color: darkseagreen;
+  }
 	
 </style>
   {% endblock %} 
@@ -19,6 +22,7 @@ h3{
 
 
 <div class="container " style="margin-top:50px;">
+  {% include 'messages.html' %}
 	<h3 > <strong>Welcome To Ram Bank</strong><br>
    <p id="un">Create Your Account Here</p></h3>
   <div class="row justify-content-md-center">
@@ -55,4 +59,5 @@ h3{
   </div>
 </div>
 {% endblock %}
- {% block scriptcontent %} {% endblock %}
+ {% block scriptcontent %}
+  {% endblock %}

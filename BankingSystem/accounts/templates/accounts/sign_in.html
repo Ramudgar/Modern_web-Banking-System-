@@ -7,6 +7,9 @@ margin-top: 20px;
 text-align: center;
 color:deepskyblue;
 } 
+.auth-validate-form button{
+  background-color: darkseagreen;
+}
 </style>
 
 {% endblock %} {% block bodycontent %}
@@ -16,15 +19,8 @@ color:deepskyblue;
   <div class="row justify-content-md-center">
     <div class="col-md-4 col-sm-3">
       <div class="signin-form">
-        {% if messages %}
-        <div class="messages">
-          {% for message in messages %}
-          <p {% if message.tags %} class="{{ message.tags }}" {% endif %}>
-            {{ message }}
-          </p>
-          {% endfor %}
-        </div>
-        {% endif %}
+        {% include 'messages.html' %}
+       
         <h3>Sign In</h3>
         <form action="" method="POST" class="auth-validate-form">
           {% csrf_token %}

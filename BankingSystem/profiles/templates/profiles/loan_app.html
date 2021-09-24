@@ -25,13 +25,13 @@ href="{% static 'css/transaction.css' %}"
         <br>   
         
         
-        <form action="{ url 'profiles:loan_app' }" method="post">
+        <form action="{% url 'profiles:loan_app' %}" method="POST">
             {% csrf_token %}
              
 
             <h3 style="font-weight: 300;">
                 
-                {{ form1|crispy }}
+                {{ form|crispy }}
             </h3>
             
             <small>By transferring money from your account, you agree to the <a href="#">Terms and Conditions</a> of amount transfer</small>. <br>

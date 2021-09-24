@@ -1,0 +1,212 @@
+{% extends 'admins/admins_layout.html' %}
+
+{% load static %}
+
+
+{% block title %}
+<title>Admin_dashboard_showuser</title>
+{% endblock %}
+
+{% block head_content %}
+{% endblock %}
+
+{% block body_content%}
+<div class="container">
+    {% include 'messages.html' %}
+    <div class="row">
+        <div class="col-md-12 offset-md-1 my-5">
+            <h3 class="text-center bg-success border-outline-primary text-light p-2" style="font-weight: 500;">Total Users</h3>
+            <div class="card py-2 px-2">
+
+               <table class="table-striped">
+                   <tr style="color:orchid">
+                       <th>Username</th>
+                       <th>Full Name</th>
+                       <th>Email</th>
+                       <th style="justify-content: space-evenly;">Actions</th>
+                   </tr>
+                   {% for user in users %}
+                   <tr>
+                       <td>{{user.username}}</td>
+                       <td>{{user.first_name}}</td>
+                       <td>{{user.email}}</td>
+                       <td><a href="/admins/update_user_to_admin/{{user.id}}" class="btn btn-primary btn-sm" onclick="return confirm('Are you sure want to update this user?')">Update to admin</a>
+                    <a href="/admins/delete_user/{{user.id}} " class="btn btn-danger btn-sm" onclick="return confirm('Are you sure want to delete this user?')">Delete</a></td>
+                   </tr>
+                   {% endfor %}
+               </table>
+                   
+            </div>
+        </div>
+        <br><br><br>
+        <div class="col-md-12 offset-md-1">
+            <h3 class="text-center bg-success border-outline-primary text-light p-2" style="font-weight: 500;">Total Admins</h3>
+            <div class="card py-2 px-2">
+
+               <table class="table-striped">
+                   <tr style="color:orchid">
+                       <th>Username</th>
+                       <th>Full Name</th>
+                       <th>Email</th>
+                       <th>Actions</th>
+                   </tr>
+                   {% for user in users_admin %}
+                   <tr>
+                       <td>{{user.username}}</td>
+                       <td>{{user.first_name}}</td>
+                       <td>{{user.email}}</td>
+                       <td><a href="/admins/demote_admin_to_user/{{user.id}}" class="btn btn-primary btn-sm" onclick="return confirm('Are you sure want to demote this Admin?')">Demote to User</a>
+                    <a href="/admins/delete_user/{{user.id}} " class="btn btn-danger btn-sm" onclick="return confirm('Are you sure want to delete this user?')">Delete</a></td>
+                   </tr>
+                   {% endfor %}
+               </table>
+
+                   
+            </div>
+        </div>
+        </div>
+        <br><br>
+        <h4 style="color: rgb(220, 223, 226); border:1px solid blue; background-color: darkmagenta;font-size: 25px;padding: 9px;">You have the following transaction history for loan:</h4>
+                
+        <table class="table table-responsive table-striped table-hover">
+            <thead style="background-color: lightskyblue;">
+                <tr>
+                    <th>Account Number</th>
+                    <th>Username </th>
+                    <th>Loan Amount(Rs.)</th>
+                    <th>Account Type</th>
+                    
+                </tr>
+               
+            </thead>
+            {% for loan in loan %}
+            
+            <tbody>
+                <tr>
+                    <td>{{ loan.enter_your_account_number}}</td>
+                    <td>{{ loan.enter_your_user_name}}</td>
+                    <td>{{ loan.enter_the_amount_you_want_in_Npr}}</td>
+                    <td>Saving</td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+        <div class="pagination">
+            <span class="step-links">
+                {% if loan.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ loan.previous_page_number }}">previous</a>
+                {% endif %}
+        
+                <span class="current">
+                    Page {{ loan.number }} of {{ loan.paginator.num_pages }}.
+                </span>
+        
+                {% if loan.has_next %}
+                    <a href="?page={{ loan.next_page_number }}">next</a>
+                    <a href="?page={{ loan.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+        <br><br>
+        <h4 style="color: rgb(220, 223, 226); border:1px solid blue; background-color: darkmagenta;font-size: 25px; padding: 9px;">You have the following transaction history for Deposit:</h4>
+                
+        <table class="table table-responsive table-striped table-hover">
+            <thead style="background-color: lightskyblue;">
+                <tr>
+                    <th>Account Number</th>
+                    <th>Username </th>
+                    <th>deposited Amount(Rs.)</th>
+                    <th>Account Type</th>
+                    
+                </tr>
+               
+            </thead>
+            {% for deposit in deposit %}
+            
+            <tbody>
+                <tr>
+                    <td>{{ deposit.account_number}}</td>
+                    <td>{{ deposit.username}}</td>
+                    <td>{{ deposit.amount}}</td>
+                    <td>Saving</td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+        <br><br>
+        <h4 style="color: rgb(220, 223, 226); border:1px solid blue; background-color: darkmagenta;font-size: 25px;padding: 9px;">You have the following transaction history for Withdraw:</h4>
+                
+        <table class="table table-responsive table-striped table-hover">
+            <thead style="background-color: lightskyblue;">
+                <tr>
+                    <th>Account Number</th>
+                    <th>Username </th>
+                    <th>Withdrawn Amount(Rs.)</th>
+                    <th>Account Type</th>
+                    
+                </tr>
+               
+            </thead>
+            {% for withdraw in withdraw %}
+            
+            <tbody>
+                <tr>
+                    <td>{{ withdraw.account_number}}</td>
+                    <td>{{ withdraw.username}}</td>
+                    <td>{{ withdraw.amount}}</td>
+                    <td>Saving</td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+        
+        <br>
+        
+        <h4 style="color: red" id="delete-acc">Danger zone</h4>
+        <div>
+            Deletion of account would mean:
+            <ul>
+                <li>permanent loss of power and responsibility,</li>
+                <li>no coming back.</li>
+            </ul>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete" >
+                Take me to deletion
+            </button>-->
+            
+            <!-- Modal -->
+        <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirm deletion</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <form>
+                  <div class="modal-body">
+                      Enter password to confirm deletion
+                      <input type="password" class="form-control" required>
+                      <br>
+                      Prove you are a human
+                      <div class="g-recaptcha" data-sitekey="6Ld_qjQUAAAAADjv2scrqpvXK4OrBZALRJFMANpP"></div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">Delete my account</button>
+                  </div>
+              </form>
+              
+            </div>
+          </div>
+        </div>
+        
+            <br> <br>
+        </div>
+</div>
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

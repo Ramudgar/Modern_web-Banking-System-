@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'admins.apps.AdminsConfig',
     'crispy_forms',
     'bootstrapform',
+     'bootstrap_pagination',
     
 ]
 
@@ -54,6 +55,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+   
 ]
 
 ROOT_URLCONF = 'BankingSystem.urls'
@@ -89,7 +92,7 @@ WSGI_APPLICATION = 'BankingSystem.wsgi.application'
 DATABASES = {
         'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Banksystem',
+        'NAME': 'Banksystem3',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',

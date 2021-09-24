@@ -13,12 +13,15 @@ class RegistrationForm(UserCreationForm):
             'email',
             'username',
             'password1',
-            'password2'
+            'password2',
+            'is_staff',
+            
         ]
     def save(self, commit=True):
         user = super(RegistrationForm, self).save(commit=False)
         user.first_name = self.cleaned_data['name']
         user.email = self.cleaned_data['email']
+       
         if commit:
             user.save()
         return user

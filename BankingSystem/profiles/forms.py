@@ -1,6 +1,7 @@
 from django import forms
 from . import models
 from django.forms import ModelForm
+from django.contrib.auth.models import User
 
 
 class BasicDetailsForm(forms.ModelForm):
@@ -8,7 +9,7 @@ class BasicDetailsForm(forms.ModelForm):
     class Meta:
         model = models.BasicDetails
         fields= '__all__'
-        exclude=['user','username']
+        exclude=['user','user_name']
 
 
 class PresentLocationForm(forms.ModelForm):
@@ -26,13 +27,14 @@ class MoneyTransferForm(forms.ModelForm):
             "enter_the_amount_to_be_transferred_in_Npr"
         ]
 
-class Loan(forms.ModelForm):
+class LoanForm(forms.ModelForm):
     class Meta:
         model=models.Loan
+        
         fields = [
             "enter_your_user_name",
-            "enter_the_your_account_number",
-            "enter_the_amount_to_be_transferred_in_Npr"
+            "enter_your_account_number",
+            "enter_the_amount_you_want_in_Npr"
         ]
 
 
@@ -45,3 +47,9 @@ class WithdrawForm(forms.ModelForm):
     class Meta:
         model=models.Withdraw
         fields= '__all__'
+
+
+class UserDeleteForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = [] 

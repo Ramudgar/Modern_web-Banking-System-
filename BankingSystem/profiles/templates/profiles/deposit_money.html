@@ -1,4 +1,5 @@
 {% extends 'profiles/profile_base_layout.html' %}
+{% load crispy_forms_filters %}
 {% load static %}
 {% block title%}
 <title>profile</title>
@@ -15,34 +16,24 @@ href="{% static 'css/setting.css' %}"
         
 
 {% block bodycontent %}
-<form action="{ url 'profiles:deposit' }" method="POST">
-    {% csrf_token %}
-    <div class="container-fluid bg-info mt-5 ml-5 border border-info pd-3" >
-        <h3 style="text-align: center; margin-top: 20px;border-bottom:2px solid black ;">Deposit Money Here</h3>
-        <div class="container-sm ml-5 mt-3 mb-5 mr-5" >
-            <div class="form-group">
-                <label>Enter the User Name:</label>
-                <input type="text" name="username" value = "{{user}}" placeholder="Enter Username" class="form-control"></input>
-            </div>
-            
-            
-            <div class="form-group">
-                <label>Enter the Account Number:</label>
-                <input type="text" name="account_number"  placeholder="Enter account number " class="form-control"></input>
-            </div>
-        
-            <div class="form-group">
-                <label>Amount:</label>
-                <input type="text" name="amount"  placeholder="How much you deposit" class="form-control">
-            </div>
+
+<div class="card text-center m-5  " id="deposit" style="width: 23rem;height:25rem; background: linear-gradient(to top left, #66ffff 0%, #ff99cc 100%);">
+    <div class="card-body ">
+        <h3 style="border-bottom: 3px solid rgb(161, 56, 175);color:rgb(30, 38, 141)"> Deposit Form  </h3>
+        <form action="{ url 'profiles:deposit' }" method="POST">
+            {% csrf_token %}
+            {{form | crispy}}
             <div class="text-right mt-4">
-                <button type="submit" class="btn btn-primary">Deposit</button>
-            </div>
-        </div>
-        </div>
-    
-    
-</form>
+                        <button type="submit" class="btn btn-primary">Deposit</button>
+                    </div>
+                </div>
+                </div>
+            
+            
+        </form>
+    </div>
+  </div>
+
 
     
 {% endblock %}
@@ -50,7 +41,7 @@ href="{% static 'css/setting.css' %}"
 {% block scriptcontent %}
     <script>
         $(".current").removeClass("current");
-        $("#online").addClass("current");
+        $("#deposit").addClass("current");
     </script>
     
 {% endblock %}

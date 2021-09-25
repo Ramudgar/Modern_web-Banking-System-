@@ -1,4 +1,5 @@
-from profiles.views import withdraw_money
+from admins.filters import LoanFilter
+from profiles.views import loan, withdraw_money
 from django.contrib.auth.decorators import login_required
 from accounts.auth import admin_only
 from profiles import models
@@ -9,7 +10,8 @@ from django.contrib.auth.models import User
 from django.shortcuts import render,redirect
 from django.contrib import messages
 
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.paginator import Paginator
+from django.db.models import Q
 
 @login_required
 @admin_only
@@ -86,6 +88,7 @@ def get_user(request):
     users_admin=users_all.filter(is_staff=1)
     deposit=models.Deposit.objects.all()
     withdraw=models.Withdraw.objects.all()
+    transfer=models.MoneyTransfer.objects.all()
     
     
 	
@@ -95,9 +98,24 @@ def get_user(request):
         'activate_showuser':'active',
         'loan':page_obj,
         'deposit':deposit,
-        'withdraw':withdraw
+        'withdraw':withdraw,
+        'transfer':transfer,
     }
     return render (request,'admins/showuser.html',context)
+
+
+# def search(request):
+#     loans = models.Loan.objects.all().order_by('-id')
+#     loan_filter = LoanFilter(request.GET, queryset=loans)
+#     loan_final = loan_filter.qs
+#     context = {
+#         'loans': loan_final,
+#         'activate_student': 'active',
+#         'loan_filter': loan_filter
+#     }
+#     return render(request, 'admins/showuser.html', context)
+
+
 
 
 

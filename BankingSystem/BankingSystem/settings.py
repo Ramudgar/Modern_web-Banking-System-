@@ -80,15 +80,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'BankingSystem.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 DATABASES = {
         'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -145,17 +136,11 @@ STATICFILES_DIRS=[
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-#Media
 
-# MEDIA_URL = '/media/'
-
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# ------ SMTP --------
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'

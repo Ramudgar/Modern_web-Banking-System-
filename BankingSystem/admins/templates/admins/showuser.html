@@ -73,8 +73,17 @@
         <br><br>
         <h4 style="color: rgb(220, 223, 226); border:1px solid #0000ff; background-color: darkmagenta;font-size: 25px;padding: 9px;">You have the following transaction history for loan:</h4> 
       
-          
+        <form method="POST" action="{% url 'admins:show-user' %}">  
+            {% csrf_token %}
+            <input type="text" name="search" placeholder="Search" />
+            <a href="{% url 'admins:show-user' %}" class="btn btn-info btn-sm" >Search</a>
         
+        {% if searched %}
+        {% for loan in loans %} 
+         {{loan.enter_your_user_name}} 
+        {% endfor %}
+        {% endif %}
+    </form>
         
                     
         <table class="table table-responsive table-striped table-hover">
@@ -205,46 +214,7 @@
         </table>
         <br>
         
-        <h4 style="color: red" id="delete-acc">Danger zone</h4>
-        <div>
-            Deletion of account would mean:
-            <ul>
-                <li>permanent loss of power and responsibility,</li>
-                <li>no coming back.</li>
-            </ul>
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete" >
-                Take me to deletion
-            </button>-->
-            
-            <!-- Modal -->
-        <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Confirm deletion</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <form>
-                  <div class="modal-body">
-                      Enter password to confirm deletion
-                      <input type="password" class="form-control" required>
-                      <br>
-                      Prove you are a human
-                      <div class="g-recaptcha" data-sitekey="6Ld_qjQUAAAAADjv2scrqpvXK4OrBZALRJFMANpP"></div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-danger">Delete my account</button>
-                  </div>
-              </form>
-              
-            </div>
-          </div>
-        </div>
-        
-            <br> <br>
+      
         </div>
 </div>
 {% endblock %}

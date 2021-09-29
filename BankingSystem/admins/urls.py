@@ -12,6 +12,6 @@ urlpatterns = [
     path('update_user_to_admin/<int:user_id>',views.update_user_to_admin,name="updateadmin"),
     path('demote_admin_to_user/<int:user_id>',views.demote_admin_to_user,name="demoteadmin"),
     path('delete_user/<int:user_id>',views.delete_user,name="delete_user"),
-    # path('search',views.search,name="search"),
+    path('search',views.search,name="search"),
     
 ]

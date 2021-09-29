@@ -25,7 +25,7 @@ def sign_in(request):
                     return redirect('profiles:account_status')
             else:
                 messages.error(request, 'username and password doesn\'t match')
-    return render(request, "accounts/sign_in.html")
+    return render(request, "accounts/sign_in.html",{'activate_signin':'active'})
 
 
 
@@ -39,7 +39,12 @@ def register(request):
         BasicDetails.objects.create(user=user,user_name=user.username)
         messages.success(request, 'user registered successfully')
         return redirect('accounts:signin')
-    return render(request, 'accounts/register.html', {'form':form})
+
+    context={
+        'form':form,
+        'activate_register':'active'
+    }
+    return render(request, 'accounts/register.html', context)
 
 @login_required
 def logout_view(request):

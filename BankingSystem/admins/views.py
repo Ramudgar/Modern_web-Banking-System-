@@ -12,6 +12,7 @@ from django.contrib import messages
 
 from django.core.paginator import Paginator
 from django.db.models import Q
+from django.views.generic.list import ListView 
 
 @login_required
 @admin_only
@@ -104,16 +105,22 @@ def get_user(request):
     return render (request,'admins/showuser.html',context)
 
 
-# def search(request):
-#     loans = models.Loan.objects.all().order_by('-id')
-#     loan_filter = LoanFilter(request.GET, queryset=loans)
-#     loan_final = loan_filter.qs
-#     context = {
-#         'loans': loan_final,
-#         'activate_student': 'active',
-#         'loan_filter': loan_filter
-#     }
-#     return render(request, 'admins/showuser.html', context)
+def search (request):
+    if request.method=="POST":
+        searched=request.POST['searched']
+        loans=models.Loan.objects.filter(name_contains=searched)
+        
+
+        context = {
+            'loans': loans,
+            'searched': searched
+        }
+        return render(request, 'admins/showuser.html', context)
+
+    else:
+        return render(request, 'admins/showuser.html', {})
+
+
 
 
 

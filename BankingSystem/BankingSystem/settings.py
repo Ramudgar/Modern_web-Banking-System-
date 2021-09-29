@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'bootstrapform',
      'bootstrap_pagination',
+     'django.contrib.postgres',
     
 ]
 

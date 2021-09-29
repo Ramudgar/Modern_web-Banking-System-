@@ -5,11 +5,12 @@
 h1{
 margin-top: 20px;
 text-align: center;
-color:deepskyblue;
+color:rgb(0, 255, 179);
 } 
 .auth-validate-form button{
   background-color: darkseagreen;
 }
+
 
 
 </style>
@@ -17,7 +18,7 @@ color:deepskyblue;
 {% endblock %} {% block bodycontent %}
 
 
-<div id="bg" class="container-fluid mt-5  " >
+<div class="container-fluid-sm p-4 " style='background-image: url("/static/images/login2.jpg")' >
  
    
 	<h1 >Welcome To Ram Bank</h1>
@@ -31,24 +32,24 @@ color:deepskyblue;
           {% csrf_token %}
           <div class="form-group">
             <label>Username</label>
-            <input type="text" name="user" placeholder="Enter your username" class="form-control" />
+            <input  type="text" name="user" placeholder="Enter your username" class="form-control" style="background-color: rgba(140, 233, 220, 0.3);" />
           </div>
           <div class="form-group">
             <label>Password</label>
-            <input type="password" placeholder="Enter your password" name="pass" class="form-control" />
+            <input type="password" placeholder="Enter your password" name="pass" class="form-control" style="background-color: rgba(80, 158, 146, 0.3);" />
           </div>
           <button type="submit" class="btn btn-danger">Login</button>
         </form>
-        <a href="{% url 'accounts:reset_password' %}">Forgot your password?</a>
-        <div class="a-divider-break"><h5>New to Ram's Bank?</h5></div>
+        <a href="{% url 'accounts:reset_password' %}" style="color: rgba(33, 37, 245, 1); ">Forgot your password?</a>
+        <div class="a-divider-break" ><h5>New to Ram's Bank?</h5></div>
         <a class="btn btn-default" href="{% url 'accounts:signup' %}"
-          >Create your Bank account</a
+        style="background-color: rgba(140, 233, 220, 0.2); " >Create your Bank account</a
         >
       </div>
     </div>
   </div>
   
-</span>
+</div>
 </div>
 
 

@@ -57,7 +57,7 @@ def money_transfer(request):
             return redirect('profiles:money_transfer')
         else:
             messages.error(request,'Unable to transfer money')
-            return render(request, "profiles/money_transfer.html",{'form':form})
+            return render(request, "profiles/money_transfer.html",{'form':form,"activate_transfer":'active'})
     context={
         'form': form,
         'activate_transfer':'active'  

@@ -15,18 +15,14 @@ color:rgb(0, 255, 179);
 
 </style>
 
-{% endblock %} {% block bodycontent %}
-
-
+{% endblock %} 
+{% block bodycontent %}
 <div class="container-fluid-sm p-4 " style='background-image: url("/static/images/login2.jpg")' >
- 
-   
 	<h1 >Welcome To Ram Bank</h1>
   <div class="row justify-content-md-center">
     <div class="col-md-4 col-sm-3">
       <div class="signin-form">
         {% include 'messages.html' %}
-       
         <h3>Sign In</h3>
         <form action="" method="POST" class="auth-validate-form">
           {% csrf_token %}
@@ -46,11 +42,6 @@ color:rgb(0, 255, 179);
         style="background-color: rgba(140, 233, 220, 0.2); " >Create your Bank account</a
         >
       </div>
-    </div>
-  </div>
+    </div></div></div>
   
-</div>
-</div>
-
-
-{% endblock %} {% block scriptcontent %} {% endblock %}
+  {% endblock %} {% block scriptcontent %} {% endblock %}
